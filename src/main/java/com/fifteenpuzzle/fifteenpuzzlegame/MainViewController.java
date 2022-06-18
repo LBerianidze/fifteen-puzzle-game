@@ -2,6 +2,7 @@ package com.fifteenpuzzle.fifteenpuzzlegame;
 
 import com.fifteenpuzzle.fifteenpuzzlegame.database.DBClient;
 import com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleGenerator;
+import com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleSolver;
 import com.fifteenpuzzle.fifteenpuzzlegame.model.PuzzleButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -144,7 +145,13 @@ public class MainViewController implements Initializable
         puzzleButtons = randArray;
         makeGrid(randArray);
     }
-
+    @FXML
+    private void solveGame(ActionEvent e)
+    {
+        PuzzleSolver solver = new PuzzleSolver(puzzleButtons);
+        Thread th = new Thread(solver);
+        th.start();
+    }
     public void closeApplication(ActionEvent actionEvent)
     {
         Platform.exit();

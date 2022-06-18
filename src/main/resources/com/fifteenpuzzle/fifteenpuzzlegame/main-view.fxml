@@ -16,6 +16,7 @@
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#startNewGame" text="Start New Game"/>
+                        <MenuItem mnemonicParsing="false" onAction="#solveGame" text="Solve current game"/>
                         <MenuItem mnemonicParsing="false" text="Exit" onAction="#closeApplication"/>
                     </items>
                 </Menu>
