@@ -5,7 +5,6 @@ import com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleGenerator;
 import com.fifteenpuzzle.fifteenpuzzlegame.model.PuzzleButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.*;
-import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -58,7 +56,7 @@ public class MainViewController implements Initializable
         client = new DBClient();
         while (name.isEmpty())
             login();
-        currentUserId = client.userExists(name);
+        currentUserId = client.getUserByName(name);
         if (currentUserId == -1)
         {
             currentUserId = client.insertUser(name);

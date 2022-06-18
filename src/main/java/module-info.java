@@ -12,6 +12,12 @@ module com.fifteenpuzzle.fiteenpuzzlegame {
     requires java.sql;
     requires com.h2database;
     requires java.naming;
+    requires java.desktop;
+    requires javafx.base;
+
+    requires javafx.media;
+    requires javafx.swing;
+    requires slf4j.api;
 
     opens com.fifteenpuzzle.fifteenpuzzlegame to javafx.fxml;
     exports com.fifteenpuzzle.fifteenpuzzlegame;

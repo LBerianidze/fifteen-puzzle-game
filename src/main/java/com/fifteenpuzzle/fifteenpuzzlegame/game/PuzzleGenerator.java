@@ -6,8 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PuzzleGenerator
 {
+    private static final Logger log = LoggerFactory.getLogger(PuzzleGenerator.class);
     private static final int COLS = 4, ROWS = 4;
     Random rand = new Random();
 
@@ -15,9 +19,9 @@ public class PuzzleGenerator
     {
         List<PuzzleButton> buttons = new ArrayList<>();
         int counter = 1;
-        while (buttons.size() != (COLS * ROWS)-1)
+        while (buttons.size() != (COLS * ROWS) - 1)
         {
-            int next = rand.nextInt((COLS * ROWS)-1);
+            int next = rand.nextInt((COLS * ROWS) - 1);
             if (buttons.stream().filter(p -> p.getPuzzleItemNumber() == next).findAny().isEmpty())
             {
                 PuzzleButton button = new PuzzleButton(counter++);
@@ -27,7 +31,6 @@ public class PuzzleGenerator
         buttons.add(new PuzzleButton(0));
         PuzzleButton[] array = new PuzzleButton[buttons.size()];
         buttons.toArray(array);
-
         for (int i = 0; i < COLS * ROWS; i++)
         {
             int currentRow = i / ROWS;
@@ -42,8 +45,10 @@ public class PuzzleGenerator
             if (currentRow != ROWS - 1)
                 currentButton.setBelow(array[ROWS * (currentRow + 1) + currentColumn]);
         }
+        log.info("Pre-done Puzzle was generated");
         return array;
     }
+
     public PuzzleButton[] createPuzzle()
     {
         List<PuzzleButton> buttons = new ArrayList<>();
@@ -73,8 +78,11 @@ public class PuzzleGenerator
             if (currentRow != ROWS - 1)
                 currentButton.setBelow(array[ROWS * (currentRow + 1) + currentColumn]);
         }
+        log.info("Random Puzzle was generated");
+
         return array;
     }
+
     public boolean checkWin(PuzzleButton[] buttons)
     {
         for (int i = 1; i < 16; i++)
@@ -82,6 +90,8 @@ public class PuzzleGenerator
             if (buttons[i - 1].getPuzzleItemNumber() != i)
                 return false;
         }
+        log.info("Win");
+
         return true;
     }
 }

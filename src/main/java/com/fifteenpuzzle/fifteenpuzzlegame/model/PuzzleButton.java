@@ -1,12 +1,16 @@
 package com.fifteenpuzzle.fifteenpuzzlegame.model;
 
+import com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleGenerator;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static java.lang.Double.MAX_VALUE;
 
 public class PuzzleButton extends Button
 {
+    private static final Logger log = LoggerFactory.getLogger(PuzzleButton.class);
     private int puzzleItemNumber;
     private PuzzleButton left;
     private PuzzleButton right;
@@ -25,8 +29,7 @@ public class PuzzleButton extends Button
             this.setDisable(true);
             this.setBorder(null);
             setEmptyStyle();
-        }
-        else
+        } else
             setDefaultStyle();
     }
 
@@ -35,6 +38,7 @@ public class PuzzleButton extends Button
         this.setStyle("-fx-background-color: coral; -fx-border-color: red; -fx-background-radius: 15;-fx-border-radius: 15; -fx-font-size: 18; ");
 
     }
+
     private void setEmptyStyle()
     {
         this.setStyle("-fx-background-color: transparent;");
@@ -116,6 +120,8 @@ public class PuzzleButton extends Button
         emptyButton.setDisable(false);
         emptyButton.setDefaultStyle();
         emptyButton.updateText();
+        log.info(String.format("Move from %d to %d", tmpValue, this.puzzleItemNumber));
+
     }
 
     private void updateText()

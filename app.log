@@ -1,0 +1,10 @@
+2022-06-19 01:38:26,572 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.database.DBClient - New user {0} with id {1} was inserted.
+2022-06-19 01:38:26,616 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleGenerator - Random Puzzle was generated
+2022-06-19 01:39:41,712 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.database.DBClient - New user t with id 3 was inserted.
+2022-06-19 01:39:41,762 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleGenerator - Random Puzzle was generated
+2022-06-19 01:42:00,028 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.database.DBClient - New user i with id 4 was inserted.
+2022-06-19 01:42:00,069 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.game.PuzzleGenerator - Random Puzzle was generated
+2022-06-19 01:42:01,338 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.model.PuzzleButton - Move from 8 to 0
+2022-06-19 01:42:02,136 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.model.PuzzleButton - Move from 2 to 0
+2022-06-19 01:42:05,783 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.model.PuzzleButton - Move from 6 to 0
+2022-06-19 01:42:07,318 [JavaFX Application Thread] INFO  com.fifteenpuzzle.fifteenpuzzlegame.model.PuzzleButton - Move from 1 to 0

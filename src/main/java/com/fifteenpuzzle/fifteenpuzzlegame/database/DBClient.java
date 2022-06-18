@@ -1,6 +1,8 @@
 package com.fifteenpuzzle.fifteenpuzzlegame.database;
 
 import org.h2.jdbcx.JdbcDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,6 +13,8 @@ import java.util.Properties;
 
 public class DBClient
 {
+    private static final Logger log = LoggerFactory.getLogger(DBClient.class);
+
     private static String DatabaseURL;
     private static String DatabaseUserName;
     private static String DatabasePassword;
@@ -48,11 +52,13 @@ public class DBClient
             this.dataSource.setPassword(DatabasePassword);
         } catch (Exception e)
         {
+            log.error("Connection to database failed", e);
+
             throw new RuntimeException(e);
         }
     }
 
-    public Integer userExists(String name)
+    public Integer getUserByName(String name)
     {
         try (Connection connection = dataSource.getConnection())
         {
@@ -67,6 +73,8 @@ public class DBClient
             }
         } catch (SQLException e)
         {
+            log.error("User search failed", e);
+
             throw new RuntimeException(e);
         }
     }
@@ -81,11 +89,17 @@ public class DBClient
                 preparedStatement.executeUpdate();
                 ResultSet result = preparedStatement.getGeneratedKeys();
                 if (result.next())
+                {
+                    log.info(String.format("New user %s with id %d was inserted.", name, result.getInt(1)));
+
                     return result.getInt(1);
+                }
                 throw new SQLException("Can not insert user");
             }
         } catch (SQLException e)
         {
+            log.error("Can't insert new user to database", e);
+
             throw new RuntimeException(e);
         }
 
@@ -106,6 +120,7 @@ public class DBClient
             }
         } catch (SQLException e)
         {
+            log.error("Can't get user games count", e);
             throw new RuntimeException(e);
         }
     }
@@ -125,6 +140,8 @@ public class DBClient
             }
         } catch (SQLException e)
         {
+            log.error("Can't insert new game to database", e);
+
             throw new RuntimeException(e);
         }
     }
